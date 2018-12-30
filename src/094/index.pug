@@ -1,0 +1,19 @@
+extend ../common/layout.pug
+
+block title
+  title 100DaysCSS N° 094 - Tree
+
+
+
+block body
+  .frame
+    .tree
+      .tree__crown
+      - var n = 1
+      while n <= 5
+        .tree__branch(class=`tree__branch--${n}`)
+        - n++
+      .tree__trunk
+
+
+    .grid.grid--x-center

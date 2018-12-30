@@ -1,0 +1,183 @@
+$frame-bg: #A8C0D8
+
+
+@import '../common/base.sass'
+
+
+$color-branch: #F0D8A8
+$color-ground: #607830
+$color-spring-dark: #489030
+$color-spring-light: #A8D860
+$color-autumn-dark: #D86000
+$color-autumn-light: #F09000
+$color-winter-dark: #eee
+$color-winter-light: #fff
+$tree-height: $frame-height * 3 / 6
+$tree-thickness: 4px
+$crown-width: 80px
+$border-radius: round($tree-thickness / 2)
+
+
+.tree
+  position: absolute
+  bottom: $frame-height / 6
+  left: $frame-width / 2 - $tree-thickness / 2
+
+  &:before
+    position: absolute
+    left: $frame-height / 6 / -2 + $tree-thickness / 2
+    bottom: 0
+    width: $frame-height / 6
+    height: $tree-thickness
+    background: $color-ground
+    border-radius: $border-radius
+    content: ''
+    z-index: 10
+    animation: ground .3s linear 0s, ground-color 20s linear 0s infinite
+    animation-fill-mode: forwards
+
+  &__crown
+    position: absolute
+    top: round($frame-height / -6)
+
+    &:before,
+    &:after
+      position: absolute
+      display: block
+      content: ''
+      width: 0
+      height: 0
+      border-style: solid
+      border-width: round($tree-height / 2) $crown-width / 2
+      transform: scaleX(0)
+
+    &:before
+      border-color: transparent $color-spring-dark $color-spring-dark transparent
+      left: -$crown-width + $tree-thickness / 2
+      transform-origin: 100% 100%
+      animation: crown-scale .5s ease .8s, crown-color-dark 20s linear 0s infinite
+      animation-fill-mode: forwards
+
+    &:after
+      border-color: transparent transparent $color-spring-light $color-spring-light
+      left: $tree-thickness / 2
+      transform-origin: 0 100%
+      animation: crown-scale .5s ease .8s, crown-color-light 20s linear 0s infinite
+      animation-fill-mode: forwards
+
+  &__branch
+    position: absolute
+    width: 4px
+    background: $color-branch
+    border-radius: $border-radius
+    transform-origin: 50% 100%
+
+    &--1
+      bottom: $tree-height * .38
+      transform: rotate(-40deg)
+      animation: branch-1 .3s linear .4s
+      animation-fill-mode: forwards
+
+    &--2
+      bottom: $tree-height * .51
+      transform: rotate(40deg)
+      animation: branch-2 .3s linear .45s
+      animation-fill-mode: forwards
+
+    &--3
+      bottom: $tree-height * .64
+      transform: rotate(-40deg)
+      animation: branch-3 .3s linear .5s
+      animation-fill-mode: forwards
+
+    &--4
+      bottom: $tree-height * .77
+      transform: rotate(40deg)
+      animation: branch-4 .3s linear .55s
+      animation-fill-mode: forwards
+
+    &--5
+      bottom: $tree-height * .9
+      transform: rotate(-40deg)
+      animation: branch-5 .3s linear .6s
+      animation-fill-mode: forwards
+
+  &__trunk
+    position: relative
+    width: $tree-thickness
+    background: $color-branch
+    border-radius: $border-radius
+    animation: truck .45s linear .2s
+    transform-origin: 50% 100%
+    animation-fill-mode: forwards
+
+
+@keyframes ground
+  0%
+    transform: scaleX(0)
+  100%
+    transform: scaleX(1)
+
+@keyframes ground-color
+  0%, 55%, 100%
+    background: $color-ground
+  65%, 90%
+    background: $color-winter-dark
+
+@keyframes truck
+  0%
+    height: 0
+  100%
+    height: $tree-height
+
+@keyframes branch-1
+  0%
+    height: 0
+  100%
+    height: $tree-height * .3
+
+@keyframes branch-2
+  0%
+    height: 0
+  100%
+    height: $tree-height * .25
+
+@keyframes branch-3
+  0%
+    height: 0
+  100%
+    height: $tree-height * .2
+
+@keyframes branch-4
+  0%
+    height: 0
+  100%
+    height: $tree-height * .15
+
+@keyframes branch-5
+  0%
+    height: 0
+  100%
+    height: $tree-height * .1
+
+@keyframes crown-scale
+  0%
+    transform: scaleX(0)
+  100%
+    transform: scaleX(1)
+
+@keyframes crown-color-dark
+  0%, 25%, 100%
+    border-color: transparent $color-spring-dark $color-spring-dark transparent
+  35%, 55%
+    border-color: transparent $color-autumn-dark $color-autumn-dark transparent
+  65%, 90%
+    border-color: transparent $color-winter-dark $color-winter-dark transparent
+
+@keyframes crown-color-light
+  0%, 25%, 100%
+    border-color: transparent transparent $color-spring-light $color-spring-light
+  35%, 55%
+    border-color: transparent transparent $color-autumn-light $color-autumn-light
+  65%, 90%
+    border-color: transparent transparent $color-winter-light $color-winter-light
