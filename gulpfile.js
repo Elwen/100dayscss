@@ -6,7 +6,6 @@ const gulp = require('gulp');
 const browserSync = require('browser-sync').create();
 const plumber = require('gulp-plumber');
 const sass = require('gulp-sass');
-const sassGlob = require('gulp-sass-glob');
 const autoprefixer = require('gulp-autoprefixer');
 const pug = require('gulp-pug');
 
@@ -45,7 +44,6 @@ const path = {
 gulp.task('sass', () => {
   return gulp.src(path.src.styles)
   .pipe(plumber())
-  .pipe(sassGlob())
   .pipe(sass().on('error', (error) => {
     process.stderr.write(`${error.messageFormatted}\n`);
     process.exit(1)
