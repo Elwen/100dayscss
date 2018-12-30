@@ -1,0 +1,13 @@
+extend ../common/layout.pug
+
+block title
+  title 100DaysCSS N° 092 - Dancing Points
+
+
+
+block body
+  .frame
+    - var n = 1
+    while n <= 16
+      .dot(class=`dot--${n}`)
+      - n++

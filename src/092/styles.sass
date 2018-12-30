@@ -1,0 +1,184 @@
+$frame-bg: #3C3251
+
+
+@import '../common/base.sass'
+
+
+$color-1: #A8D46F
+$color-2: #359668
+$color-3: #FFED90
+$dot-size: 16px
+$dot-scaled-size: 10px
+$dot-position: $frame-width / 2 - $dot-size / 2
+$scaled-dot-position: $frame-width / 2 - $dot-scaled-size / 2
+$dec-dot-position: $frame-width / 2 - $dot-size / 2 + $dot-scaled-size / 2
+$inc-dot-position: ($dot-scaled-size - $dot-size) / 2
+
+
+.dot
+  position: absolute
+  border-radius: 100%
+  transition: all .2s ease
+
+  @for $i from 1 through 8
+    &--#{$i}
+      top: $dot-position
+      left: $dot-position
+      width: $dot-size
+      height: $dot-size
+      animation: dance-#{$i} 5s linear infinite, color-change-1 5s linear infinite
+
+  @each $i in [9, 10, 13, 14]
+    &--#{$i}
+      top: $dot-position
+      left: $dot-position
+      width: $dot-size
+      height: $dot-size
+      animation: dance-#{$i} 3s linear infinite, color-change-2 3s linear infinite, decrease 3s linear infinite
+
+  @each $i in [11, 12, 15, 16]
+    &--#{$i}
+      top: $scaled-dot-position
+      left: $scaled-dot-position
+      width: $dot-scaled-size
+      height: $dot-scaled-size
+      animation: dance-#{$i} 3s linear infinite, color-change-2 3s linear infinite, increase 3s linear infinite
+
+
+@keyframes color-change-1
+  0%, 50%
+    background: $color-1
+  51%, 100%
+    background: $color-3
+
+@keyframes color-change-2
+  0%, 50%
+    background: $color-2
+  51%, 100%
+    background: $color-1
+
+@keyframes color-change-3
+  0%, 49%
+    background: $color-2
+  50%, 51%
+    background: $color-3
+  52%, 100%
+    background: $color-1
+
+
+@keyframes decrease
+  0%, 100%
+    width: $dot-size
+    height: $dot-size
+  50%
+    width: $dot-scaled-size
+    height: $dot-scaled-size
+
+@keyframes increase
+  0%, 100%
+    width: $dot-scaled-size
+    height: $dot-scaled-size
+  50%
+    width: $dot-size
+    height: $dot-size
+
+
+@keyframes dance-1
+  0%, 100%
+    transform: translate(-$dot-position, -$dot-position)
+  50%
+    transform: translate(0, $dot-position)
+
+@keyframes dance-2
+  0%, 100%
+    transform: translate(-$dot-position, -$dot-position)
+  50%
+    transform: translate($dot-position, 0)
+
+@keyframes dance-3
+  0%, 100%
+    transform: translate($dot-position, -$dot-position)
+  50%
+    transform: translate(-$dot-position, 0)
+
+@keyframes dance-4
+  0%, 100%
+    transform: translate($dot-position, -$dot-position)
+  50%
+    transform: translate(0, $dot-position)
+
+@keyframes dance-5
+  0%, 100%
+    transform: translate($dot-position, $dot-position)
+  50%
+    transform: translate(0, -$dot-position)
+
+@keyframes dance-6
+  0%, 100%
+    transform: translate($dot-position, $dot-position)
+  50%
+    transform: translate(-$dot-position, 0)
+
+@keyframes dance-7
+  0%, 100%
+    transform: translate(-$dot-position, $dot-position)
+  50%
+    transform: translate(0, -$dot-position)
+
+@keyframes dance-8
+  0%, 100%
+    transform: translate(-$dot-position, $dot-position)
+  50%
+    transform: translate($dot-position, 0)
+
+
+@keyframes dance-9
+  0%, 100%
+    transform: translate(0, -$dot-position)
+  50%
+    transform: translate(-$dot-position, -$inc-dot-position)
+
+@keyframes dance-10
+  0%, 100%
+    transform: translate(0, -$dot-position)
+  50%
+    transform: translate($dec-dot-position, -$inc-dot-position)
+
+
+@keyframes dance-11
+  0%, 100%
+    transform: translate($scaled-dot-position, 0)
+  50%
+    transform: translate($inc-dot-position, -$scaled-dot-position)
+
+@keyframes dance-12
+  0%, 100%
+    transform: translate($scaled-dot-position, 0)
+  50%
+    transform: translate($inc-dot-position, $dot-position)
+
+
+@keyframes dance-13
+  0%, 100%
+    transform: translate(0, $dot-position)
+  50%
+    transform: translate($dec-dot-position, -$inc-dot-position)
+
+@keyframes dance-14
+  0%, 100%
+    transform: translate(0, $dot-position)
+  50%
+    transform: translate(-$dot-position, -$inc-dot-position)
+
+
+@keyframes dance-15
+  0%, 100%
+    transform: translate(-$scaled-dot-position, 0)
+  50%
+    transform: translate($inc-dot-position, $dot-position)
+
+@keyframes dance-16
+  0%, 100%
+    transform: translate(-$scaled-dot-position, 0)
+  50%
+    transform: translate($inc-dot-position, -$scaled-dot-position)
