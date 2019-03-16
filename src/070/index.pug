@@ -1,0 +1,16 @@
+extend ../common/layout.pug
+
+block title
+  title 100DaysCSS N° 092 - Dancing Points
+
+
+
+block body
+  - var dates = {15: 'Friday', 16: 'Saturday', 17: 'Sunday', 18: 'Monday'};
+
+  .frame
+    for day, date in dates
+      .date-box
+        .date-box__day= day
+        .date-box__date= date
+        .date-box__btn + Add event

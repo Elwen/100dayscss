@@ -1,0 +1,74 @@
+$frame-bg: linear-gradient(130deg, #A8D46F 30%, #FFED90 100%)
+$frame-border-radius: 0
+
+
+@import '../common/base.sass'
+
+
+$color-1: #A8D46F
+$color-2: #359668
+$color-3: #FFED90
+
+.frame
+  display: flex
+  justify-content: center
+  align-content: center
+  flex-wrap: wrap
+
+  &:hover
+    .date-box:not(:hover)
+      color: transparentize(#fff, .6)
+
+.date-box
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-direction: column
+  position: relative
+  width: 50%
+  height: 50%
+  color: #fff
+  transition: all .3s ease-in-out
+
+  &:before
+    position: absolute
+    width: 100%
+    height: 100%
+    border-color: transparent
+    content: ''
+    transition: border-width .3s ease-in-out
+
+  &:hover
+    transform: scale(.95)
+    cursor: pointer
+
+    &:before
+      box-shadow: inset 2px 2px 5px 2px transparentize(#000, .7)
+      border: 5px solid $color-2
+
+    .date-box__btn
+      transform: scale(1)
+      opacity: .7
+
+  &__day
+    font-size: 1rem
+    font-weight: 300
+    line-height: 1em
+
+  &__date
+    font-size: 4rem
+    font-weight: 700
+    line-height: 1em
+
+  &__btn
+    position: absolute
+    bottom: 28px
+    padding: 5px 10px
+    box-sizing: border-box
+    border: 1px solid transparentize(#fff, .3)
+    font-size: 1rem
+    font-weight: 300
+    line-height: 1em
+    transform: scale(.5)
+    opacity: 0
+    transition: transform .3s ease-in-out, opacity .2s ease-in-out
