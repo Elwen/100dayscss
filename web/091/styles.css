@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
 * {
   margin: 0;
   padding: 0;
@@ -5,7 +6,7 @@
 
 html,
 body {
-  height: 100vh; }
+  min-height: 100vh; }
 
 body {
   display: -webkit-box;
