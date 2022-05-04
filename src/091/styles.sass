@@ -1,16 +1,15 @@
+@use 'sass:math'
+
 $bg-color: #3C3251
 $box-side-size: 140px
 $box-fill-color: transparentize(#A8D46F, .2)
 $box-fill-color-2: transparentize(#359668, .3)
 $box-fill-level: .15
 
-
 @import '../common/base.sass'
-
 
 .perspective
   perspective: 500px
-
 
 .box
   position: relative
@@ -42,29 +41,29 @@ $box-fill-level: .15
     line-height: $box-side-size
 
     &--top
-      transform: rotateX(90deg) translateZ($box-side-size / 2)
+      transform: rotateX(90deg) translateZ(math.div($box-side-size, 2))
       background: rgba(0, 0, 0, .1)
 
     &--bottom
-      transform: rotateX(-90deg) translateZ($box-side-size / 2)
+      transform: rotateX(-90deg) translateZ(math.div($box-side-size, 2))
       background: rgba(0, 0, 0, .5)
       box-shadow: -8px -8px 10px 0 rgba(0,0,0,.4)
       transition: all .5s ease-in-out
 
     &--front
-      transform: translateZ($box-side-size / 2)
+      transform: translateZ(math.div($box-side-size, 2))
 
     &--back
-      transform: rotateY(180deg) translateZ($box-side-size / 2)
+      transform: rotateY(180deg) translateZ(math.div($box-side-size, 2))
 
     &--left
-      transform: rotateY(-90deg) translateZ($box-side-size / 2)
+      transform: rotateY(-90deg) translateZ(math.div($box-side-size, 2))
 
     &--right
-      transform: rotateY(90deg) translateZ($box-side-size / 2)
+      transform: rotateY(90deg) translateZ(math.div($box-side-size, 2))
 
     &--front,
-    &--left,
+    &--left
       &:before
         display: block
         position: absolute
@@ -84,7 +83,6 @@ $box-fill-level: .15
     background: $box-fill-color
     animation: fill-level 4s ease-in-out infinite alternate, fill-color 7s ease infinite alternate
 
-
 @keyframes fill-side
   0%, 2%
     transform: scaleY($box-fill-level)
@@ -93,9 +91,9 @@ $box-fill-level: .15
 
 @keyframes fill-level
   0%, 2%
-    transform: rotateX(-90deg) translateZ($box-side-size / 2 - $box-side-size * $box-fill-level)
+    transform: rotateX(-90deg) translateZ(math.div($box-side-size, 2) - $box-side-size * $box-fill-level)
   100%
-    transform: rotateX(-90deg) translateZ($box-side-size / -2)
+    transform: rotateX(-90deg) translateZ(math.div($box-side-size, -2))
 
 @keyframes fill-color
   0%, 20%

@@ -1,7 +1,6 @@
 'use strict';
 
 
-
 /* Plugins */
 
 const gulp = require('gulp');
@@ -10,7 +9,6 @@ const plumber = require('gulp-plumber');
 const sass = require('gulp-sass')(require('sass'));
 const autoprefixer = require('gulp-autoprefixer');
 const pug = require('gulp-pug');
-
 
 
 /* Paths & names */
@@ -36,7 +34,6 @@ const path = {
 };
 
 
-
 /* Tasks */
 
 gulp.task('sass', () => {
@@ -49,6 +46,7 @@ gulp.task('sass', () => {
     .pipe(autoprefixer({
       cascade: false
     }))
+    .pipe(sass({ outputStyle: 'compressed' }))
     .pipe(gulp.dest(path.build.styles))
     .pipe(browserSync.reload({
       stream: true
@@ -85,5 +83,4 @@ gulp.task('watch', () => {
 });
 
 gulp.task('default', gulp.parallel(['sass', 'pug']));
-
 gulp.task('dev', gulp.parallel(['sass', 'pug', 'watch', 'browser-sync']));

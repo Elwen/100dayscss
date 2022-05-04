@@ -1,8 +1,8 @@
+@use 'sass:math'
+
 $frame-bg: #A8C0D8
 
-
 @import '../common/base.sass'
-
 
 $color-branch: #F0D8A8
 $color-ground: #607830
@@ -12,22 +12,21 @@ $color-autumn-dark: #D86000
 $color-autumn-light: #F09000
 $color-winter-dark: #eee
 $color-winter-light: #fff
-$tree-height: $frame-height * 3 / 6
+$tree-height: $frame-height * math.div(3, 6)
 $tree-thickness: 4px
 $crown-width: 80px
-$border-radius: round($tree-thickness / 2)
-
+$border-radius: round(math.div($tree-thickness, 2))
 
 .tree
   position: absolute
-  bottom: $frame-height / 6
-  left: $frame-width / 2 - $tree-thickness / 2
+  bottom: math.div($frame-height, 6)
+  left: math.div($frame-width, 2) - math.div($tree-thickness, 2)
 
   &:before
     position: absolute
-    left: $frame-height / 6 / -2 + $tree-thickness / 2
+    left: math.div(math.div($frame-height, 6), -2) + math.div($tree-thickness, 2)
     bottom: 0
-    width: $frame-height / 6
+    width: math.div($frame-height, 6)
     height: $tree-thickness
     background: $color-ground
     border-radius: $border-radius
@@ -38,7 +37,7 @@ $border-radius: round($tree-thickness / 2)
 
   &__crown
     position: absolute
-    top: round($frame-height / -6)
+    top: round(math.div($frame-height, -6))
 
     &:before,
     &:after
@@ -48,19 +47,19 @@ $border-radius: round($tree-thickness / 2)
       width: 0
       height: 0
       border-style: solid
-      border-width: round($tree-height / 2) $crown-width / 2
+      border-width: round(math.div($tree-height, 2)) math.div($crown-width, 2)
       transform: scaleX(0)
 
     &:before
       border-color: transparent $color-spring-dark $color-spring-dark transparent
-      left: -$crown-width + $tree-thickness / 2
+      left: -$crown-width + math.div($tree-thickness, 2)
       transform-origin: 100% 100%
       animation: crown-scale .5s ease .8s, crown-color-dark 20s linear 0s infinite
       animation-fill-mode: forwards
 
     &:after
       border-color: transparent transparent $color-spring-light $color-spring-light
-      left: $tree-thickness / 2
+      left: math.div($tree-thickness, 2)
       transform-origin: 0 100%
       animation: crown-scale .5s ease .8s, crown-color-light 20s linear 0s infinite
       animation-fill-mode: forwards
@@ -110,7 +109,6 @@ $border-radius: round($tree-thickness / 2)
     animation: truck .45s linear .2s
     transform-origin: 50% 100%
     animation-fill-mode: forwards
-
 
 @keyframes ground
   0%

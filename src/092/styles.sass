@@ -1,19 +1,18 @@
+@use 'sass:math'
+
 $frame-bg: #3C3251
 
-
 @import '../common/base.sass'
-
 
 $color-1: #A8D46F
 $color-2: #359668
 $color-3: #FFED90
 $dot-size: 16px
 $dot-scaled-size: 10px
-$dot-position: $frame-width / 2 - $dot-size / 2
-$scaled-dot-position: $frame-width / 2 - $dot-scaled-size / 2
-$dec-dot-position: $frame-width / 2 - $dot-size / 2 + $dot-scaled-size / 2
-$inc-dot-position: ($dot-scaled-size - $dot-size) / 2
-
+$dot-position: math.div($frame-width, 2) - math.div($dot-size, 2)
+$scaled-dot-position: math.div($frame-width, 2) - math.div($dot-scaled-size, 2)
+$dec-dot-position: math.div($frame-width, 2) - math.div($dot-size, 2) + math.div($dot-scaled-size, 2)
+$inc-dot-position: math.div(($dot-scaled-size - $dot-size), 2)
 
 .dot
   position: absolute
@@ -44,7 +43,6 @@ $inc-dot-position: ($dot-scaled-size - $dot-size) / 2
       height: $dot-scaled-size
       animation: dance-#{$i} 3s linear infinite, color-change-2 3s linear infinite, increase 3s linear infinite
 
-
 @keyframes color-change-1
   0%, 50%
     background: $color-1
@@ -65,7 +63,6 @@ $inc-dot-position: ($dot-scaled-size - $dot-size) / 2
   52%, 100%
     background: $color-1
 
-
 @keyframes decrease
   0%, 100%
     width: $dot-size
@@ -81,7 +78,6 @@ $inc-dot-position: ($dot-scaled-size - $dot-size) / 2
   50%
     width: $dot-size
     height: $dot-size
-
 
 @keyframes dance-1
   0%, 100%
@@ -131,7 +127,6 @@ $inc-dot-position: ($dot-scaled-size - $dot-size) / 2
   50%
     transform: translate($dot-position, 0)
 
-
 @keyframes dance-9
   0%, 100%
     transform: translate(0, -$dot-position)
@@ -143,7 +138,6 @@ $inc-dot-position: ($dot-scaled-size - $dot-size) / 2
     transform: translate(0, -$dot-position)
   50%
     transform: translate($dec-dot-position, -$inc-dot-position)
-
 
 @keyframes dance-11
   0%, 100%
@@ -157,7 +151,6 @@ $inc-dot-position: ($dot-scaled-size - $dot-size) / 2
   50%
     transform: translate($inc-dot-position, $dot-position)
 
-
 @keyframes dance-13
   0%, 100%
     transform: translate(0, $dot-position)
@@ -169,7 +162,6 @@ $inc-dot-position: ($dot-scaled-size - $dot-size) / 2
     transform: translate(0, $dot-position)
   50%
     transform: translate(-$dot-position, -$inc-dot-position)
-
 
 @keyframes dance-15
   0%, 100%
