@@ -4,13 +4,18 @@
   "description": "100 days CSS challenge",
   "author": "Elwen <elwen.web@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "dev": "gulp dev",
+    "build": "gulp default"
+  },
   "devDependencies": {
-    "browser-sync": "^2.26.3",
-    "gulp": "^4.0.0",
-    "gulp-autoprefixer": "^6.0.0",
+    "browser-sync": "^2.27.9",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
     "gulp-plumber": "^1.2.1",
-    "gulp-pug": "^4.0.1",
-    "gulp-sass": "^4.0.2"
+    "gulp-pug": "^5.0.0",
+    "gulp-sass": "^5.1.0",
+    "sass": "^1.51.0"
   },
   "repository": {
     "type": "git",
@@ -19,5 +24,10 @@
   "keywords": [
     "100 days CSS",
     "css challenge"
+  ],
+  "browserslist": [
+    "defaults",
+    "not IE 11",
+    "maintained node versions"
   ]
 }
